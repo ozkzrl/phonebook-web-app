@@ -102,7 +102,7 @@ Resources:
                 echo "${MyDBURI}" > /home/ec2-user/dbserver.endpoint
                 cd /home/ec2-user
                 TOKEN=$(aws --region=us-east-1 ssm get-parameter --name /ondia/phonebook/token --with-decryption --query 'Parameter.Value' --output text)
-                git clone https://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@github.com/ozkzrl/phonebook-web-app.git
+                git clone https://$TOKEN@github.com/ozkzrl/phonebook-web-app.git
                 python3 /home/ec2-user/phonebook-web-app/solution/phonebook-app.py
               - MyDBURI: !GetAtt rDSInstance.Endpoint.Address
 
